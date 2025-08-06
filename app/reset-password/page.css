@@ -1,0 +1,186 @@
+/* app/reset-password/page.css */
+
+/* 0) Reset defaults & ensure full-screen */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  background: none;
+}
+
+/* 1) Full-screen animated gradient + noise */
+.reset-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #111827, #1f2937, #111827);
+  background-size: 300% 300%;
+  animation: bgShift 20s ease infinite;
+  color: #e5e7eb;
+  overflow: hidden;
+}
+.reset-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('/noise.png') repeat;
+  opacity: 0.04;
+  pointer-events: none;
+}
+@keyframes bgShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 2) Header */
+.reset-header {
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.reset-header .logo {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #4ade80;
+  margin-bottom: 0.25rem;
+}
+.reset-header .tagline {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* 3) Override Card defaults to remove white border/background */
+.reset-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px;
+  background: rgba(30, 41, 59, 0.65) !important;
+  border: 1px solid rgba(74, 222, 128, 0.3) !important;
+  backdrop-filter: blur(16px) saturate(150%);
+  border-radius: 1rem !important;
+  box-shadow:
+    0 12px 36px rgba(0,0,0,0.6),
+    0 0 20px rgba(74, 222, 128, 0.4) !important;
+  padding: 2rem !important;
+  animation: cardFloat 6s ease-in-out infinite;
+}
+@keyframes cardFloat {
+  0%,100% { transform: perspective(600px) rotateX(2deg) translateY(0); }
+  50%     { transform: perspective(600px) rotateX(0deg) translateY(-6px); }
+}
+
+/* 4) Title inside card */
+.reset-title h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #e5e7eb;
+}
+.reset-title p {
+  font-size: 1rem;
+  color: #9ca3af;
+  margin-bottom: 1.5rem;
+}
+
+/* 5) Form fields */
+.reset-form .field {
+  margin-bottom: 1rem;
+}
+.reset-form label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #e5e7eb;
+  margin-bottom: 0.25rem;
+}
+.reset-form .relative {
+  position: relative;
+}
+.reset-form .icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.reset-form input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 3rem;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 0.75rem !important;
+  color: #e5e7eb !important;
+  font-size: 1rem;
+  backdrop-filter: blur(8px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.reset-form input:focus {
+  border-color: #4ade80 !important;
+  box-shadow: 0 0 8px rgba(74,222,128,0.6) !important;
+  outline: none !important;
+}
+
+/* 6) Toggle visibility icon */
+.toggle-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  background: none;
+  border: none;
+}
+
+/* 7) Error text */
+.error-text {
+  color: #f87171;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* 8) Submit button */
+.update-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #4ade80, #22d3ee) !important;
+  color: #0a0a0a !important;
+  border: none !important;
+  border-radius: 0.75rem !important;
+  box-shadow: 0 0 16px rgba(74,222,128,0.6) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.update-btn:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+}
+.update-btn:hover:enabled {
+  transform: translateY(-2px) scale(1.02) !important;
+  box-shadow: 0 0 24px rgba(74,222,128,0.8) !important;
+}
+
+/* 9) Footer */
+.reset-footer {
+  z-index: 1;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
